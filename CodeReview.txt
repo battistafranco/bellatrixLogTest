@@ -1,0 +1,30 @@
+The code is used to log different messages throughout an application. We want the
+ability to be able to log to a text file, the console and/or the database. Messages can be
+marked as message, warning or error. We also want the ability to selectively be able to
+choose what gets logged, such as to be able to log only errors or only errors and
+warnings.
+
+1) If you were to review the following code, what feedback would you give? Please
+be specific and indicate any errors that would occur as well as other best practices
+and code refactoring that should be done.
+2) Rewrite the code based on the feedback you provided in question 1. Please
+include unit tests on your code. 
+
+1)
+	Some important points of the code that I would change:
+	- The indetation of the code and the empty lines, nowadays VS have a lot of shorcuts and tools to let the code pretty. (Like CTRL + K + D).
+	- Add a "_" to the variable LogToDataBase, to let it equal to the others global variables.
+	- The variable _initialized it's not used anywhere, so I would took it out.
+	- Remane some boolean variables to let the code more intiutive (message = isMessage, warning = isWarning, error = isError), some other variables have duplicated names, so I would change it.
+	- The static property of the LogMessage method not allow call it to be called from the unit test proyect, so I took it out.
+	- The trim() method will crash if the message variable is null.
+	- I would add a try catch method that contains the code to save data in the database and the file system.
+	- Add a try catch block, for the Log to Database or the Log to file methods exeptions.
+	- Some variables are not properly named neither initialized, like t or l, a good practice is to set to the variables a meaningfull name.
+	- Change some If statements to Else If, to prevent wrong behaviour.
+	- I would change all the strings concatenation, to String.Format functions, to maintain the code more legible.
+	- I would prefer to separate the code in other minimum methods, like the actions for Database logging, or File Logging, because maintain the code clean an allow us to reuse the code if we need it later.
+	- For the File loggin I would add A String Builder function.
+
+2) The code was uploaded to GitHub.
+	https://github.com/battistafranco/bellatrixLogTest.git
